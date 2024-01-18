@@ -1,0 +1,205 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="website icon" type="png" href="/img/ic.png" />
+  </head>
+  <body>
+    <div id="snowflakes"></div>
+
+    <div class="login-box">
+      <h2>Login</h2>
+      <img src="/img/aw.png" width="100%" />
+      <form action="home.html" id="form">
+        <div class="user-box">
+          <input type="email" name="email" id="email" required />
+          <label>Email</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="password" id="password" required />
+          <label>Password</label>
+          <span id="togglePassword" onclick="togglePasswordVisibility()"
+            ><img src="/img/eye-off.svg" style="filter: drop-shadow(0px 1px 5px #ff0000)"
+          /></span>
+        </div>
+        <button id="submit">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Login
+        </button>
+      </form>
+    </div>
+
+    <script>
+      function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const togglePasswordButton = document.getElementById('togglePassword');
+
+        // Toggle tipe input antara 'password' dan 'text'
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+
+        // Toggle gambar mata antara terbuka dan tertutup
+        const eyeImg = passwordInput.type === 'password' ? 'eye-off.svg' : 'eye.svg';
+        togglePasswordButton.innerHTML = `<img src="/img/${eyeImg}" style="filter: drop-shadow(0px 1px 5px #ff0000)" />`;
+      }
+
+      document.getElementById('form').addEventListener('submit', function (event) {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+          alert('Silahkan isi semua');
+          event.preventDefault(); // Menghentikan pengiriman formulir jika tidak lengkap
+        } else if (password.length < 8) {
+          alert('Password harus minimal 8 karakter');
+          event.preventDefault(); // Menghentikan pengiriman formulir jika password kurang dari 8 karakter
+        } else {
+          alert('Berhasil Terimakasih');
+        }
+      });
+    </script>
+    <script src="/JS/app.js"></script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/CSS/style.css" />
+    <link rel="website icon" type="png" href="img/ic.png" />
+
+    <style>
+      .popup {
+        display: none;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        color: red;
+        padding: 21px;
+        font-size: 25px;
+        border-radius: 8px;
+        box-shadow: 0 0 21px rgb(255 255 255);
+        z-index: 1000;
+      }
+
+      .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+      }
+
+      .popup-content {
+        text-align: center;
+      }
+
+      .close-btn {
+        cursor: pointer;
+        font-size: 20px;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+      }
+
+      p {
+        margin-top: 25px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="snowflakes"></div>
+
+    <div id="snowflakesdua"></div>
+
+    <div class="login-box">
+      <h2>Login</h2>
+      <img src="/img/aw.png" width="100%" />
+      <form action="home.html" id="form">
+        <div class="user-box">
+          <input type="email" name="email" id="email" />
+          <label>Email</label>
+        </div>
+        <div class="user-box">
+          <input type="password" name="password" id="password" />
+          <label>Password</label>
+          <span id="togglePassword" onclick="togglePasswordVisibility()">
+            <img src="/img/eye.svg" style="filter: drop-shadow(0px 1px 5px #ff0000)" />
+          </span>
+        </div>
+        <button id="submit" onclick="showPopup()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          Login
+        </button>
+      </form>
+    </div>
+
+    <!-- Popup Container -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <span class="close-btn" onclick="closePopup()">&times;</span>
+        <p id="popupMessage">Mohon di isi</p>
+      </div>
+    </div>
+
+    <script>
+      function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('password');
+        const togglePasswordButton = document.getElementById('togglePassword');
+        passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+        const eyeImg = passwordInput.type === 'password' ? 'eye.svg' : 'eye-off.svg';
+        togglePasswordButton.innerHTML = `<img src="/img/${eyeImg}" style="filter: drop-shadow(0px 1px 5px #ff0000)" />`;
+      }
+
+      function showPopup(message) {
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        const popupMessage = document.getElementById('popupMessage');
+        overlay.style.display = 'block';
+        popup.style.display = 'block';
+        popupMessage.innerText = message;
+      }
+
+      function closePopup() {
+        const overlay = document.getElementById('overlay');
+        const popup = document.getElementById('popup');
+        overlay.style.display = 'none';
+        popup.style.display = 'none';
+      }
+
+      document.getElementById('form').addEventListener('submit', function (event) {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        if (!email || !password) {
+          showPopup('Silahkan isi semua');
+          event.preventDefault();
+        } else if (password.length < 8) {
+          showPopup('Password harus minimal 8 karakter');
+          event.preventDefault();
+        } else {
+          alert('Berhasil Terimakasih');
+        }
+      });
+    </script>
+    <script src="/JS/app.js"></script>
+    <script src="/JS/app2.js"></script>
+  </body>
+</html>
