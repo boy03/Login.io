@@ -1,0 +1,66 @@
+.ulsa {
+  justify-content: space-between;
+  display: flex;
+  padding: 9px 10%;
+  background-color: rgb(229, 13, 13);
+  list-style-type: none;
+}
+
+.likas {
+  padding: 20px;
+}
+
+.gmb {
+  /* text-decoration: none; */
+  color: white;
+  background-color: blue;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.gmb:hover {
+  background-color: aqua;
+  cursor: pointer;
+}
+
+.asu {
+  color: white;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+.pdf {
+  padding: 20px;
+}
+
+.tabale-cart {
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+
+.card-text {
+  color: white;
+  padding: 4px;
+}
+
+.card-body {
+  background-color: var(--primary);
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: 0rem 1rem;
+}
+
+.card {
+  padding: 5px;
+}
