@@ -30,7 +30,7 @@ a {
   align-items: center;
   padding: 1px 10%;
   background-color: rgb(0, 0, 0);
-  /* border-bottom: 2px solid #ff0000; */
+  border-bottom: 2px solid #ff0000;
   position: fixed;
   top: 0;
   left: 0;
